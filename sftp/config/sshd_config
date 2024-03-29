@@ -1,0 +1,34 @@
+Include /data/sftp/config/*
+
+# faster connection
+UseDNs no
+
+# limited access
+PermitRootLogin yes
+X11Forwarding no
+AllowTcpForwarding no
+PermitTTY no
+
+# ignore user's ~/.ssh/known_hosts and ~/.rhosts and ~/.shosts
+IgnoreUserKnownHosts yes
+IgnoreRhosts yes
+
+# enable pam
+UsePAM yes
+PasswordAuthentication yes
+
+# allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+
+# force sftp and chroot jail
+Subsystem sftp internal-sftp
+ForceCommand internal-sftp -f AUTH -l INFO -d /%u
+ChrootDirectory /data/user
+
+Match User public
+ForceCommand internal-sftp -f AUTH -l INFO
+ChrootDirectory /data/public
+
+Match User root
+ForceCommand internal-sftp -f AUTH -l INFO
+ChrootDirectory /data/user/root
