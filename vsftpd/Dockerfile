@@ -4,6 +4,7 @@ LABEL maintainer="Zuka Dong"
 
 RUN apt update \
     && apt install -y vsftpd libpam-pwdfile apache2-utils \
+    && apt clean && apt autoclean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN mkdir -p /etc/vsftpd && \

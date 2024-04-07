@@ -1,7 +1,7 @@
 Include /data/sftp/config/*
 
 # faster connection
-UseDNs no
+UseDNS no
 
 # limited access
 PermitRootLogin yes

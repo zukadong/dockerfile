@@ -8,7 +8,7 @@ LABEL maintainer="Zuka Dong"
 # apache2-utils:  htpasswd command, to manage user password
 RUN apt update && \
     apt install -y openssh-server libpam-pwdfile whois apache2-utils language-pack-zh-hans && \
-    locale-gen zh CN.UTF-8 && \
+    locale-gen zh_CN.UTF-8 && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV LANG zh CN.UTF-8
